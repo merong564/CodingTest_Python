@@ -1,0 +1,45 @@
+## 상하좌우 이동
+# 내 풀이
+# n = int(input())
+# data = list(input().split())
+# x, y = 1, 1
+
+# for i in data:
+#   if i == 'L':
+#     if 2 <= y:
+#       y -= 1
+
+#   elif i == 'R':
+#     if y <= n-1:
+#       y += 1
+
+#   elif i == 'U':
+#     if 2 <= x:
+#       x -= 1
+
+#   elif i == 'D':
+#     if x <= n-1:
+#       x += 1
+
+# print(x,y)
+
+n = int(input())
+plans = input().split()
+x, y = 1, 1
+
+move_types = ['L', 'R', 'U', 'D']
+dx = [0, 0, -1, 1]
+dy = [-1, 1, 0, 0]
+
+for plan in plans:
+  for i in range(len(move_types)):
+    if plan == move_types[i]:
+      nx = x + dx[i]
+      ny = y + dy[i]
+
+  if nx < 1 or ny < 1 or nx > n or ny > n:
+    continue
+  else:
+    x, y = nx, ny
+
+print(x, y)
