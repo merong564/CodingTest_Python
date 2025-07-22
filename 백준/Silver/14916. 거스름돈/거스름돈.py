@@ -1,6 +1,23 @@
-n = int(input())
-dp = [-1, -1, 1, -1, 2, 1, 3, 2, 4, 3]
-for i in range(10,n+1):
-    dp.append(dp[i-5]+1)
+import sys
 
-print(dp[n])
+def find(n):
+  global coins
+  if n < 0:
+    print(-1)
+    sys.exit()
+    
+  if n % 5 == 0:
+    coins += n//5
+
+  else:
+    n -= 2
+    coins += 1
+    find(n)
+
+n = int(input())
+coins = 0
+find(n)
+print(coins)
+
+    
+  
