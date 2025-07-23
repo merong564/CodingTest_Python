@@ -1,13 +1,19 @@
+def find(k):
+  global result
+  if k!=0:
+    for coin in coins:
+        if (k-coin)>=0:
+          result += k//coin
+          rem = k%coin
+          find(rem)
+          break
+
 n, k = map(int, input().split())
-
 coins = []
-cnt = 0
-
-for i in range(n):
-  coins.append(int(input()))
-
-for i in range(1, n+1):
-  cnt += k // coins[-i]
-  k %= coins[-i]
-
-print(cnt)
+for _ in range(n):
+  coin = int(input())
+  coins.append(coin)
+coins.sort(reverse = True)
+result = 0
+find(k)
+print(result)
