@@ -20,7 +20,27 @@ max_sum = 0
 find_min(mus)
 print(max_sum)
 
+## 다른사람 풀이 (deque 사용)
+import sys
+from collections import deque
+input = sys.stdin.readline
 
-    
-    
-  
+n = int(input())
+arry = deque(sorted(list(map(int, input().split()))))
+
+result = 0
+
+if n%2 == 0:
+  while arry:
+    sum = arry.popleft() + arry.pop()
+    if sum>result:
+      result = sum
+else:
+  arry.pop()
+  even_arry = arry
+  while even_arry:
+    sum = even_arry.popleft() + even_arry.pop()
+    if sum>result:
+      result = sum
+
+print(result)
