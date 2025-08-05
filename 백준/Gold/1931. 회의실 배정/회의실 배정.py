@@ -1,20 +1,21 @@
 import sys
+input = sys.stdin.readline
 
-n = int(input())
+N = int(input())
+time_arr = []
 
-endPoint: int = 0
-answer: int = 0
+#회의 시간 입력
+for _ in range(N):
+    time_arr.append(tuple(map(int, input().split())))
 
-arr = []
+#회의 끝나는 시간 기준으로 정렬
+time_arr = sorted(time_arr, key=lambda x:(x[1], x[0]))
 
-for i in range(0,n):
-    a, b = map(int,sys.stdin.readline().rstrip().split())
-    arr.append([a,b])
+count = 0
+last_end_time = 0
 
-arr.sort(key=lambda x: (x[1], x[0]))
-
-for newStart, newEnd in arr:
-    if endPoint <= newStart:
-        answer += 1
-        endPoint = newEnd
-print(answer)
+for start, end in time_arr:
+    if start >= last_end_time:
+        count+=1
+        last_end_time = end
+print(count)
