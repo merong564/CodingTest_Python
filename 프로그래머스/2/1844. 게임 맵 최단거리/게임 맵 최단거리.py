@@ -26,8 +26,3 @@ def solution(maps):
     else:                                   # 도달 불가능할 경우 -1 반환
         return -1
     
-    
-    answer = 0
-    return answer
-
-    
