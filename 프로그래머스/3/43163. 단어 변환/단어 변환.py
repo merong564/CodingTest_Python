@@ -15,12 +15,7 @@ def solution(begin, target, words):
     for w in words:
         words_dict[w] = []
         
-    for w in words:
-        front = w[:2]
-        back = w[1:]
-        start = w[0]
-        end = w[2]
-        
+    for w in words:        
         for word in words:
             if is_one_letter_diff(w, word):
                 words_dict[w].append(word)
